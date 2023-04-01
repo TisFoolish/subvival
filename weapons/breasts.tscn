@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv6d7odjuhdwl"]
+
+[ext_resource type="Texture2D" uid="uid://ba7675xrcg0q7" path="res://graphics/weapon breasts.png" id="1_gq43w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gski7"]
+atlas = ExtResource("1_gq43w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hapdj"]
+atlas = ExtResource("1_gq43w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujr42"]
+atlas = ExtResource("1_gq43w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4i11"]
+atlas = ExtResource("1_gq43w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22n84"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gski7")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_hapdj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujr42")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_d4i11")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Breasts" type="Node2D"]
+
+[node name="BreastsAnimation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_22n84")
+frame = 3
+frame_progress = 0.268863
