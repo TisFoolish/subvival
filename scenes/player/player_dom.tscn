@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bs1uj0n2uiliy"]
+[gd_scene load_steps=10 format=3]
 
 [ext_resource type="Script" path="res://scenes/player/player_dom.gd" id="1_fnajb"]
-[ext_resource type="Texture2D" uid="uid://d1p248d41jkp0" path="res://graphics/Dom.png" id="2_0oaqe"]
+[ext_resource type="Texture2D" uid="uid://d1p248d41jkp0" path="res://assets/textures/doms/horse_dom.png" id="2_0oaqe"]
 [ext_resource type="PackedScene" uid="uid://dxdhx1apsfltg" path="res://scenes/player/player_cam.tscn" id="3_e2vra"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xgatr"]
