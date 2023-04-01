@@ -42,5 +42,5 @@ animations = [{
 
 [node name="BreastsAnimation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_22n84")
-frame = 3
-frame_progress = 0.268863
+frame = 1
+frame_progress = 0.147881

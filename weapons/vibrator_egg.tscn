@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://st6xpxdjfjo5"]
+
+[ext_resource type="Texture2D" uid="uid://bi0ldqxyd10pv" path="res://graphics/weapon vibrator egg.png" id="1_wxees"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15v5p"]
+atlas = ExtResource("1_wxees")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpev3"]
+atlas = ExtResource("1_wxees")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8lyk"]
+atlas = ExtResource("1_wxees")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5qsd"]
+atlas = ExtResource("1_wxees")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22n84"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": SubResource("AtlasTexture_15v5p")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_wpev3")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_e8lyk")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_k5qsd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="VibratorEgg" type="Node2D"]
+
+[node name="VibratorEggAnim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_22n84")
+frame = 3
+frame_progress = 0.065847
