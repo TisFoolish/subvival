@@ -1,4 +1,4 @@
-extends Area2D
+extends CharacterBody2D
 signal hit
 signal death
 
@@ -9,12 +9,13 @@ signal death
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DamageTick.start()
 	screen_size = get_viewport_rect().size
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 	if Input.is_action_pressed("move_left"):
@@ -31,6 +32,7 @@ func _process(delta):
 		$AnimatedSprite2D.stop()
 		
 	position += velocity * delta
+#	move_and_slide()
 	#Clamping Position for testing only. Will need to set up map boundaries
 	
 	if velocity.x != 0:
@@ -43,12 +45,13 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-
-func _on_body_entered(body):
-	print_debug("Damage Taken")
-	health -= damage_taken
-	if(health <= 0):
-		death.emit()
-	#Could Flash red
+func _on_damage_tick_timeout():
+	print("Damage Tick")
+	if($Area2D.has_overlapping_areas()):
+		print("Overlapping")
+		health -= damage_taken
+		if(health <= 0):
+			print("Lost it")
+			emit_signal("death")
+			hide()
 	
-
