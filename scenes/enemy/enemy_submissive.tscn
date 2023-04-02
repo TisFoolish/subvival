@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddpv1s64dship"]
+[gd_scene load_steps=14 format=3 uid="uid://ddpv1s64dship"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy_submissive.gd" id="1_uok17"]
-[ext_resource type="Texture2D" uid="uid://ci4nwvv1fvelw" path="res://graphics/Sub.png" id="2_0l3th"]
+[ext_resource type="Texture2D" uid="uid://ci4nwvv1fvelw" path="res://assets/textures/subs/fox_subs.png" id="2_0l3th"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1yeeo"]
 radius = 13.0
@@ -76,6 +76,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nwerf"]
+radius = 20.0
+height = 60.0
+
 [node name="enemy_submissive" type="CharacterBody2D"]
 script = ExtResource("1_uok17")
 metadata/_edit_group_ = true
@@ -94,3 +98,9 @@ metadata/_edit_group_ = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_nwerf")

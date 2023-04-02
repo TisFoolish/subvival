@@ -9,6 +9,7 @@ signal death
 var screen_size
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$DamageTick.start()
 	screen_size = get_viewport_rect().size
 
 
@@ -44,7 +45,13 @@ func start(pos):
 	show()
 	$CollisionShape2D.disabled = false
 
-
-
+func _on_damage_tick_timeout():
+	print("Damage Tick")
+	if($Area2D.has_overlapping_areas()):
+		print("Overlapping")
+		health -= damage_taken
+		if(health <= 0):
+			print("Lost it")
+			emit_signal("death")
+			hide()
 	
-
