@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://djfhw668n8q6x"]
 
 [ext_resource type="Texture2D" uid="uid://ba7675xrcg0q7" path="res://assets/textures/weapons/weapon breasts.png" id="1_gq43w"]
 
@@ -39,8 +39,9 @@ animations = [{
 }]
 
 [node name="Breasts" type="Node2D"]
+position = Vector2(-52, 45)
 
 [node name="BreastsAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(115, 87)
 sprite_frames = SubResource("SpriteFrames_22n84")
-frame = 3
-frame_progress = 0.268863
+frame_progress = 0.146009
