@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bs1uj0n2uiliy"]
+[gd_scene load_steps=13 format=3 uid="uid://bs1uj0n2uiliy"]
 
 [ext_resource type="Script" path="res://scenes/player/player_dom.gd" id="1_fnajb"]
 [ext_resource type="Texture2D" uid="uid://d1p248d41jkp0" path="res://assets/textures/doms/horse_dom.png" id="2_0oaqe"]
@@ -45,6 +45,27 @@ animations = [{
 radius = 14.0
 height = 70.0
 
+[sub_resource type="Animation" id="Animation_uglnc"]
+resource_name = "flash_red"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gcnwe"]
+_data = {
+"flash_red": SubResource("Animation_uglnc")
+}
+
 [node name="Player_Dom" type="CharacterBody2D"]
 script = ExtResource("1_fnajb")
 metadata/_edit_group_ = true
@@ -54,16 +75,24 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_j1t7y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_438bk")
 
 [node name="player_cam" parent="." instance=ExtResource("3_e2vra")]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="dom_area2d" type="Area2D" parent="."]
+metadata/is_weapon = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dom_area2d"]
+visible = false
 shape = ExtResource("3_shyaa")
 
 [node name="DamageTick" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gcnwe")
+}
 
 [connection signal="timeout" from="DamageTick" to="." method="_on_damage_tick_timeout"]

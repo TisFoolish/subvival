@@ -46,9 +46,8 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 
 func _on_damage_tick_timeout():
-	print("Damage Tick")
-	if($Area2D.has_overlapping_areas()):
-		print("Overlapping")
+	if($dom_area2d.has_overlapping_areas()):
+		$AnimationPlayer.play("flash_red")
 		health -= damage_taken
 		if(health <= 0):
 			print("Lost it")

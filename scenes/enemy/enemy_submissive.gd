@@ -24,3 +24,10 @@ func _process(delta):
 
 func set_player(player):
 	player_object = player
+
+
+
+
+func _on_area_2d_area_entered(area):
+	print(area)
+	print(area.get_meta("is_weapon"))
