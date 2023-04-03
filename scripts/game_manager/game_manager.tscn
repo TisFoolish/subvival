@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://baweh8hf2lgkw"]
+
+[ext_resource type="Script" path="res://scripts/game_manager/game_manager.gd" id="1_su75h"]
+
+[sub_resource type="Curve2D" id="Curve2D_3wh71"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -680, -392, 0, 0, 0, 0, 696, -392, 0, 0, 0, 0, 696, 408, 0, 0, 0, 0, -680, 408, 0, 0, 0, 0, -680, -392)
+}
+point_count = 5
+
+[node name="game_manager" type="Node"]
+script = ExtResource("1_su75h")
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.968
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="MobPath" type="Path2D" parent="."]
+modulate = Color(0.431373, 0.341176, 0, 1)
+position = Vector2(-8, -8)
+curve = SubResource("Curve2D_3wh71")
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-680, -392)
+rotates = false
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_score_timer_timeout"]

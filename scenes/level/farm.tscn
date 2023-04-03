@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://com3on4g43g8g"]
+[gd_scene load_steps=7 format=3 uid="uid://com3on4g43g8g"]
 
 [ext_resource type="Texture2D" uid="uid://dwhkuhbfbq55f" path="res://assets/textures/bg tiles/Background Tilemap.png" id="1_eyjjo"]
+[ext_resource type="PackedScene" uid="uid://baweh8hf2lgkw" path="res://scripts/game_manager/game_manager.tscn" id="2_nthw3"]
+[ext_resource type="PackedScene" uid="uid://ddpv1s64dship" path="res://scenes/enemy/enemy_submissive.tscn" id="3_0dfyf"]
+[ext_resource type="PackedScene" uid="uid://bs1uj0n2uiliy" path="res://scenes/player/player_dom.tscn" id="3_uyx7t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i73wf"]
 texture = ExtResource("1_eyjjo")
@@ -147,6 +150,7 @@ sources/0 = SubResource("TileSetAtlasSource_i73wf")
 [node name="Farm" type="Node2D"]
 
 [node name="FarmTileMap" type="TileMap" parent="."]
+scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_6umre")
 format = 2
 layer_0/name = "Ground"
@@ -165,3 +169,11 @@ layer_2/y_sort_enabled = false
 layer_2/y_sort_origin = 0
 layer_2/z_index = 10
 layer_2/tile_data = PackedInt32Array()
+
+[node name="game_manager" parent="." instance=ExtResource("2_nthw3")]
+mob_scene = ExtResource("3_0dfyf")
+
+[node name="Player_Dom" parent="." instance=ExtResource("3_uyx7t")]
+
+[node name="start_position" type="Marker2D" parent="."]
+position = Vector2(1098, 1171)
