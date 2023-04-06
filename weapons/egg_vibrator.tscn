@@ -21,26 +21,25 @@ region = Rect2(48, 0, 16, 16)
 [sub_resource type="SpriteFrames" id="SpriteFrames_22n84"]
 animations = [{
 "frames": [{
-"duration": 0.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kckwx")
 }, {
-"duration": 0.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_kdmfs")
 }, {
-"duration": 0.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34fo1")
 }, {
-"duration": 0.4,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_b8vsh")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 18.0
 }]
 
 [node name="Egg_Vibrator" type="Node2D"]
 
 [node name="EggVibratorAnim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_22n84")
-frame = 1
-frame_progress = 0.268616
+frame_progress = 0.390761

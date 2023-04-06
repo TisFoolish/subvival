@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkic8285r6l71"
-path="res://.godot/imported/weapon breasts2.png-1ac904f0aedfa81f450494ab40b1936f.ctex"
+uid="uid://dcvojfwqwy21a"
+path="res://.godot/imported/weapon breasts new.png-9321699e160bb9526806e929bb795ac1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/weapons/weapon breasts2.png"
-dest_files=["res://.godot/imported/weapon breasts2.png-1ac904f0aedfa81f450494ab40b1936f.ctex"]
+source_file="res://assets/textures/weapons/weapon breasts new.png"
+dest_files=["res://.godot/imported/weapon breasts new.png-9321699e160bb9526806e929bb795ac1.ctex"]
 
 [params]
 
