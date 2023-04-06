@@ -1,8 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://nyujld0p18yf"]
+[gd_scene load_steps=31 format=3 uid="uid://l1b1i0xgqech"]
 
 [ext_resource type="Script" path="res://scripts/weapons/booba.gd" id="1_xxwlf"]
 [ext_resource type="Texture2D" uid="uid://ba7675xrcg0q7" path="res://assets/textures/weapons/weapon breasts.png" id="2_o2qwf"]
-[ext_resource type="Texture2D" uid="uid://dkic8285r6l71" path="res://assets/textures/weapons/weapon breasts2.png" id="3_g4b2r"]
+[ext_resource type="Script" path="res://scripts/weapons/getdamage.gd" id="4_5kfmn"]
+[ext_resource type="Texture2D" uid="uid://dcvojfwqwy21a" path="res://assets/textures/weapons/weapon breasts new.png" id="4_rice8"]
+[ext_resource type="Texture2D" uid="uid://x6wuf8s7qq0a" path="res://assets/textures/weapons/new evolved booba.png" id="5_htb3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ram08"]
+size = Vector2(0, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6ge2"]
+size = Vector2(20, 2000)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jmg0b"]
+size = Vector2(20, 2000)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lb4oe"]
+radius = 10.0
+height = 20.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hgmk2"]
 radius = 16.0
@@ -27,8 +42,24 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("2_o2qwf")
 region = Rect2(96, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1cd1"]
-atlas = ExtResource("3_g4b2r")
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsn1k"]
+atlas = ExtResource("4_rice8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klaey"]
+atlas = ExtResource("4_rice8")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1bbd"]
+atlas = ExtResource("4_rice8")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2y6l"]
+atlas = ExtResource("4_rice8")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp4w5"]
+atlas = ExtResource("5_htb3w")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7oyps"]
@@ -60,7 +91,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k1cd1")
+"texture": SubResource("AtlasTexture_lsn1k")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_klaey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1bbd")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_e2y6l")
+}],
+"loop": true,
+"name": &"booba 3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp4w5")
 }],
 "loop": true,
 "name": &"evolved",
@@ -72,7 +120,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:rotation")
+tracks/0/path = NodePath("BaseWeapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -84,7 +132,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/Area2D/CollisionShape2D/Node2D:rotation")
+tracks/1/path = NodePath("MilkLasers:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -96,7 +144,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterBody2D/Area2D2/CollisionShape2D/Node2D:rotation")
+tracks/2/path = NodePath("BaseWeapon/CollisionShape2D/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -108,7 +156,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CharacterBody2D/Area2D3/CollisionShape2D/Node2D:rotation")
+tracks/3/path = NodePath("BaseWeapon/CollisionShape2D2/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -120,19 +168,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterBody2D/Area2D4/CollisionShape2D/Node2D:rotation")
+tracks/4/path = NodePath("BaseWeapon/CollisionShape2D3/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-6.28319]
+"values": [0.0]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CharacterBody2D/Area2D5/CollisionShape2D/Node2D:rotation")
+tracks/5/path = NodePath("BaseWeapon/CollisionShape2D4/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -144,7 +192,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CharacterBody2D/Area2D6/CollisionShape2D/Node2D:rotation")
+tracks/6/path = NodePath("BaseWeapon/CollisionShape2D5/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -156,7 +204,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CharacterBody2D/Area2D7/CollisionShape2D/Node2D:rotation")
+tracks/7/path = NodePath("BaseWeapon/CollisionShape2D6/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -168,10 +216,22 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CharacterBody2D/Area2D8/CollisionShape2D/Node2D:rotation")
+tracks/8/path = NodePath("BaseWeapon/CollisionShape2D7/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BaseWeapon/CollisionShape2D8/weapon_Area2D/CollisionShape2D/Node2D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -185,7 +245,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CharacterBody2D:rotation")
+tracks/0/path = NodePath("BaseWeapon:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -197,19 +257,19 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CharacterBody2D/Area2D/CollisionShape2D/Node2D:rotation")
+tracks/1/path = NodePath("MilkLasers:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, -6.28319]
+"values": [0.0, 6.28319]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CharacterBody2D/Area2D2/CollisionShape2D/Node2D:rotation")
+tracks/2/path = NodePath("BaseWeapon/CollisionShape2D/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -221,7 +281,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CharacterBody2D/Area2D3/CollisionShape2D/Node2D:rotation")
+tracks/3/path = NodePath("BaseWeapon/CollisionShape2D2/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -233,7 +293,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CharacterBody2D/Area2D4/CollisionShape2D/Node2D:rotation")
+tracks/4/path = NodePath("BaseWeapon/CollisionShape2D3/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -245,7 +305,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CharacterBody2D/Area2D5/CollisionShape2D/Node2D:rotation")
+tracks/5/path = NodePath("BaseWeapon/CollisionShape2D4/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -257,7 +317,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CharacterBody2D/Area2D6/CollisionShape2D/Node2D:rotation")
+tracks/6/path = NodePath("BaseWeapon/CollisionShape2D5/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -269,7 +329,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CharacterBody2D/Area2D7/CollisionShape2D/Node2D:rotation")
+tracks/7/path = NodePath("BaseWeapon/CollisionShape2D6/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -281,10 +341,22 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("CharacterBody2D/Area2D8/CollisionShape2D/Node2D:rotation")
+tracks/8/path = NodePath("BaseWeapon/CollisionShape2D7/weapon_Area2D/CollisionShape2D/Node2D:rotation")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("BaseWeapon/CollisionShape2D8/weapon_Area2D/CollisionShape2D/Node2D:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -297,120 +369,1232 @@ _data = {
 "Rotate": SubResource("Animation_kkxla")
 }
 
+[sub_resource type="GDScript" id="GDScript_lf7x2"]
+resource_local_to_scene = true
+script/source = "extends Timer
+
+var shooting_milk:bool = false
+@export var duration:float = 5
+@export var duration_scale:float = 1
+
+func _ready():
+	stop()
+	$MilkAnimPlayer.play(\"No Milk\")
+
+func _on_evolved():
+	set_one_shot(true)
+	start(1)
+	
+
+func _on_timeout():
+	if shooting_milk:
+		$MilkAnimPlayer.play(\"Milk Spray Off\")
+		shooting_milk = false
+		start(duration*duration_scale+randf_range(-3, 3))
+	else:
+		$MilkAnimPlayer.play(\"Milk Spray On\")
+		shooting_milk = true
+		start(duration*duration_scale+randf_range(-3, 3))
+		pass
+"
+
+[sub_resource type="Animation" id="Animation_owce6"]
+resource_name = "Milk Spray Off"
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.975),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_t16t1"]
+resource_name = "Milk Spray On"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ykj1y"]
+resource_name = "No Milk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MilkLasers/CollisionShape2D7/weapon_Area2D/CollisionShape2D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(1e-05, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_aunbg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../weapon_Area2D/weapon_Area2D/milk:mesh:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 2000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../weapon_Area2D/weapon_Area2D/CollisionShape2D:shape:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(20, 2000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../weapon_Area2D/weapon_Area2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D:disabled")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qk6gr"]
+_data = {
+"Milk Spray Off": SubResource("Animation_owce6"),
+"Milk Spray On": SubResource("Animation_t16t1"),
+"No Milk": SubResource("Animation_ykj1y"),
+"RESET": SubResource("Animation_aunbg")
+}
+
 [node name="Booba" type="Node2D"]
 position = Vector2(598, 346)
 script = ExtResource("1_xxwlf")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="MilkLasers" type="CharacterBody2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers"]
 position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(0, -128)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D2" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D2/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D2/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(128, -0.000274658)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D3" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D3/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D3/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(-128, 0.000274658)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D4" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D4/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D4/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(-90.5096, 90.5098)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D5" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D5/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D5/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2.4)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(90.5096, -90.5098)
+rotation = -2.3562
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D6" node_paths=PackedStringArray("weapon_parent")]
+scale = Vector2(1e-05, 1)
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D6/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D6/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(90.5099, 90.5094)
+rotation = -0.785401
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D7" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D7/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D7/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D7/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="MilkLasers"]
+position = Vector2(-90.5099, -90.5094)
+rotation = 2.35619
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="MilkLasers/CollisionShape2D8" node_paths=PackedStringArray("weapon_parent")]
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+metadata/evolved_weapon = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MilkLasers/CollisionShape2D8/weapon_Area2D"]
+position = Vector2(0, 1026)
+shape = SubResource("RectangleShape2D_i6ge2")
+disabled = true
+
+[node name="milk" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D"]
+mesh = SubResource("QuadMesh_jmg0b")
+
+[node name="milktip" type="MeshInstance2D" parent="MilkLasers/CollisionShape2D8/weapon_Area2D/CollisionShape2D/milk"]
+position = Vector2(0, -997)
+scale = Vector2(1, 2)
+mesh = SubResource("CapsuleMesh_lb4oe")
+
+[node name="BaseWeapon" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(0, 128)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
+
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D" node_paths=PackedStringArray("weapon_parent")]
 collision_layer = 0
 collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
-metadata/_edit_group_ = true
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D/CollisionShape2D/Node2D"]
-position = Vector2(0, -1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D2" type="Area2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BaseWeapon"]
 position = Vector2(0, -128)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D2"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D2" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D2/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D2/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D2/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D2/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D2/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D3" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(128, 0)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(-128, 0.000274658)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D3"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D3" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D3/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D3/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D3/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D3/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D3/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D4" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(-128, 0)
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(128, -0.000274658)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D4"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D4" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D4/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D4/CollisionShape2D"]
-rotation = -6.28319
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D4/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D4/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D4/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D5" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(-90, 90)
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(-90.5096, 90.5098)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D5"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D5" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D5/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D5/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D5/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D5/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D5/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D6" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(90, -90)
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(90.5096, -90.5098)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D6"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D6" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D6/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D6/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D6/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D6/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D6/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D7" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(90, 90)
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(-90.5099, -90.5094)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D7"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D7" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D7/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D7/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D7/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D7/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D7/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
 
-[node name="Area2D8" type="Area2D" parent="CharacterBody2D"]
-position = Vector2(-90, -90)
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="BaseWeapon"]
+position = Vector2(90.5099, 90.5094)
+shape = SubResource("RectangleShape2D_ram08")
+disabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D8"]
+[node name="weapon_Area2D" type="Area2D" parent="BaseWeapon/CollisionShape2D8" node_paths=PackedStringArray("weapon_parent")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_5kfmn")
+weapon_parent = NodePath("../../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseWeapon/CollisionShape2D8/weapon_Area2D"]
 shape = SubResource("CircleShape2D_hgmk2")
 
-[node name="Node2D" type="Node2D" parent="CharacterBody2D/Area2D8/CollisionShape2D"]
+[node name="Node2D" type="Node2D" parent="BaseWeapon/CollisionShape2D8/weapon_Area2D/CollisionShape2D"]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D/Area2D8/CollisionShape2D/Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BaseWeapon/CollisionShape2D8/weapon_Area2D/CollisionShape2D/Node2D"]
 sprite_frames = SubResource("SpriteFrames_7oyps")
-animation = &"booba 2"
-autoplay = "booba 2"
+animation = &"booba 3"
+autoplay = "booba 3"
+
+[node name="TempUpTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Rotate"
@@ -418,7 +1602,16 @@ libraries = {
 "": SubResource("AnimationLibrary_et4qy")
 }
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+[node name="MilkTimer" type="Timer" parent="."]
+script = SubResource("GDScript_lf7x2")
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="MilkAnimPlayer" type="AnimationPlayer" parent="MilkTimer"]
+root_node = NodePath("../../AnimationPlayer")
+autoplay = "No Milk"
+libraries = {
+"": SubResource("AnimationLibrary_qk6gr")
+}
+
+[connection signal="evolved" from="." to="MilkTimer" method="_on_evolved"]
+[connection signal="timeout" from="TempUpTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="MilkTimer" to="MilkTimer" method="_on_timeout"]
